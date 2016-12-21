@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Document</title>
+  <style>
+  .icon{display:inline-block;width:84px;height:84px;}
+  .icon1{background-image:url(demo.jpg);background-repeat: no-repeat;background-position:center 0;}
+  </style>
+</head>
+<body>
+  <a href="" class="icon icon1"></a>
+  <script>
+    var icon=document.querySelector(".icon");
+    var i=0;
+    var enter,leave;
+    icon.onmouseenter=function(){
+      var _this=this;
+      clearInterval(leave)
+      enter=setInterval(function(){
+        if(i<19){
+          i++;
+          _this.style.backgroundPosition="center "+(-84)*i+"px";
+        }else{
+          clearInterval(enter)
+        }
+      },30)
+      _this.onmouseleave=function(){
+        var _this=this;
+        clearInterval(enter)
+        leave=setInterval(function(){
+          if(i>0){
+            i--;
+            _this.style.backgroundPosition="center "+(-84)*i+"px";
+          }else{
+            clearInterval(leave)
+          }
+          
+        },30)
+      }
+    }
+    
+  </script>
+</body>
+</html>
